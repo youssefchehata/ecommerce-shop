@@ -1,15 +1,16 @@
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
   return (
     <Card className='mb-3' p-3 rounded>
-      <a href={`/product/${product.id}`}>
+      <Link to={`/product/${product.id}`}>
         <Card.Img src={product.image} variant='top' alt={product.name} />
-      </a>
+      </Link>
       <Card.Body>
-        <a href={`/product/${product.id}`}>
+        <Link to={`/product/${product.id}`}>
           <Card.Title as='div'>{product.name}</Card.Title>
-        </a>
+        </Link>
         <Card.Text as='h3'>${product.price}</Card.Text>
       </Card.Body>
     </Card>
