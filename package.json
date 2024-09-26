@@ -1,0 +1,23 @@
+{
+  "name": "ecommerce-shop",
+  "version": "2.0.0",
+  "description": "ecommerce application built with  the MERN stack",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "cd frontend && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Youssef Chehata",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.7"
+  }
+}
