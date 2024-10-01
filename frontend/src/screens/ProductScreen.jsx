@@ -4,6 +4,8 @@ import { Row , Col , Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
 // import products from "../products";
 import {useGetProductByIdQuery} from "../slices/productsApiSlice";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 
 const ProductScreen = () => {
@@ -17,9 +19,10 @@ const ProductScreen = () => {
     <>
     <Link className="btn btn-light my-3" to='/'> Go Back </Link>
    {isLoading ? (
-        <h1>Loading...</h1>
+        <Loader/>
       ) : error ? (
-        <h1>{error?.data?.message || error.error}</h1>
+        <Message variant={'danger'}>{error?.data?.message || error.error}</Message>
+
       ) : (
     <Row>
         <Col md={5} ><Image src={product?.image} alt={product?.name} fluid /></Col>
