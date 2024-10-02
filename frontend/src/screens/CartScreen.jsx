@@ -3,19 +3,21 @@ import { useDispatch , useSelector} from "react-redux";
 import {Row ,Col , ListGroup , Card, Image,Form ,Button, ListGroupItem} from "react-bootstrap";
 import {FaTrash} from 'react-icons/fa';
 import Message from "../components/Message";
-import { addToCart } from "../slices/cartSlice";
+import { addToCart, removeFromCart } from "../slices/cartSlice";
 
 const CartScreen = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const {cartItems}=cart;
-    
+
     const addToCartHandler = async(el , qty)=>{
       dispatch(addToCart({...el, qty}));
       navigate(`/cart`);
   }
-
+  const removeFromCartHandler = async(id)=>{
+    dispatch(removeFromCart(id));
+}
   return (
     <Row>
         <Col md={8}>
@@ -37,7 +39,7 @@ const CartScreen = () => {
                                {[...Array(el?.countInStock).keys()].map((i) => ( <option key={i} value={i + 1}> {i + 1} </option> ))}
                              </Form.Control>
                         </Col>
-                      <Col md={2} > <Button    type='button' variant="light" onClick={()=>{}}><FaTrash/></Button> </Col>
+                      <Col md={2} > <Button    type='button' variant="light" onClick={()=>removeFromCartHandler(el._id)}><FaTrash/></Button> </Col>
                     </Row>
                 </ListGroupItem>)
                )}
@@ -52,7 +54,7 @@ const CartScreen = () => {
          ${cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)}
          </ListGroup.Item>
          <ListGroup.Item>
-            <Button type="button" className="btn-block" disabled={cartItems.length === 0} >Checkout</Button>
+            <Button type="button" className="btn-block" disabled={cartItems.length === 0} onClick={()=>navigate(`/login?redirect=/shipping`)}>Checkout</Button>
          </ListGroup.Item>
     
         </ListGroup>
