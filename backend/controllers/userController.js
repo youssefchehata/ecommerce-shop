@@ -64,7 +64,7 @@ res.send("update user profile")
 //@access Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
   
- res.send("get users")
+ res.send("get userss")
 });
  //@desc  GET users by id
 //@route GET /api/users/:id
