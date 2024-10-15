@@ -42,7 +42,11 @@ res.send("register user")
 //@route  POST /api/users/logout
 //@access Private
 const logoutUser = asyncHandler(async (req, res) => {
-res.send("logout user")
+res.cookie('token', '',{
+    httpOnly:true,
+    expires: new Date(0)
+})
+res.status(200).json({message:'Logged out successfully'})
 });
 
 //@desc   Get user profile
@@ -64,7 +68,7 @@ res.send("update user profile")
 //@access Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
   
- res.send("get userss")
+ res.send("get users")
 });
  //@desc  GET users by id
 //@route GET /api/users/:id
