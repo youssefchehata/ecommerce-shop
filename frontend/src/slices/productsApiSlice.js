@@ -3,7 +3,7 @@ import { apiSlice } from './apiSlice';
 
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getProducts: builder.query({ query: () => ({ url: PRODUCTS_URL }), keepUnusedDataFor: 5,providesTags:['Products'] }),
+    getProducts: builder.query({ query: ({pageNumber }) => ({ url: PRODUCTS_URL, params: { pageNumber }, }), keepUnusedDataFor: 5, providesTags: ['Products'], }),
     getProductById: builder.query({ query: (id) => ({ url: `${PRODUCTS_URL}/${id}` }), keepUnusedDataFor: 5, }),
     createProduct: builder.mutation({ query: () => ({ url: `${PRODUCTS_URL}`, method: 'POST', }), invalidatesTags: ['Product'], }),
     deleteProduct: builder.mutation({ query: (productId) => ({ url: `${PRODUCTS_URL}/${productId}`, method: 'DELETE', }), providesTags: ['Product'], }),
