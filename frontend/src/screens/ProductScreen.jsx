@@ -10,6 +10,7 @@ import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch , useSelector} from "react-redux";
 import { toast } from 'react-toastify';
+import Meta from "../components/Meta";
 
 
 
@@ -59,6 +60,9 @@ const ProductScreen = () => {
         <Message variant={'danger'}>{error?.data?.message || error.error}</Message>
 
       ) : (
+        <>
+          <Meta title={product.name} description={product.description} />
+
     <Row>
         <Col md={5} ><Image src={product?.image} alt={product?.name} fluid /></Col>
         <Col md={4} >
@@ -114,7 +118,7 @@ const ProductScreen = () => {
          </Card>
          </Col>
 
-    </Row>)}
+    </Row>
 
     <Row className='review'>
             <Col md={6}>
@@ -158,8 +162,10 @@ const ProductScreen = () => {
               </ListGroup>
             </Col>
           </Row>
+          </>
+      )}
     </>
-  )
-}
+  );
+};
 
 export default ProductScreen
