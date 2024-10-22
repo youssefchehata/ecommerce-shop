@@ -10,7 +10,9 @@
     "client": "cd frontend && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder.js import",
-    "data:destroy": "node backend/seeder.js destroy"
+    "data:destroy": "node backend/seeder.js destroy",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+
   },
   "author": "Youssef Chehata",
   "license": "ISC",
