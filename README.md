@@ -1,4 +1,5 @@
 ![Uploading image.png…]()
+![alt text](image.png)
 
 # ecommerce-shop
 ecommerce website built with MERN &amp; Redux Toolkit
