@@ -1,3 +1,4 @@
+
 # ecommerce-shop
 ecommerce website built with MERN &amp; Redux Toolkit
 Un site e-commerce complet développé avec la stack MERN (MongoDB, Express, React, Node.js) et Redux Toolkit pour la gestion d'état globale.
@@ -21,7 +22,7 @@ Ce projet est un site e-commerce complet qui permet aux utilisateurs de :
 - Naviguer parmi des produits
 - Ajouter des produits au panier
 - Passer une commande
-- Payer via un système de paiement intégré
+- Payer via un système de paiement intégré :(payPal)
 - Voir l'historique des commandes
 
 L'administrateur peut également :
@@ -33,7 +34,7 @@ L'administrateur peut également :
 
 - [x] Authentification utilisateur (JWT)
 - [x] Système de panier d'achat
-- [x] Paiement intégré (ex. : PayPal, Stripe)
+- [x] Paiement intégré (PayPal)
 - [x] Gestion des commandes et des utilisateurs pour l'administrateur
 - [x] Gestion du stock des produits
 - [x] Système d'évaluation des produits
@@ -73,16 +74,15 @@ cd ecommerce-shop
 3. Installez les dépendances pour le frontend et le backend :
 
 ```bash
-npm install
-cd frontend
-npm install
+npm install && cd frontend npm install
+
 ```
 
 4. Créez un fichier `.env` dans le répertoire principal et configurez les variables d'environnement comme suit :
 
 ```bash
 # MongoDB URI
-MONGO_URI=mongodb+srv://<user>:<password>@cluster0.mongodb.net/ecommerce
+MONGO_URI=""
 
 # JWT Secret
 JWT_SECRET=your_jwt_secret
