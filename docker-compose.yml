@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .               # Le contexte racine permet d'accéder aux fichiers parents (package.json, .env, etc.)
+      dockerfile: backend/Dockerfile
+    container_name: ecommerce-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    volumes:
+      - .:/app                # Pour le développement, le montage du répertoire permet de refléter les changements
+    command: ["npm", "start"]
+
+  frontend:
+    build:
+      context: ./frontend     # Le contexte du frontend
+      dockerfile: Dockerfile  # Dockerfile dans le dossier frontend
+    container_name: ecommerce-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "start"]
